@@ -18,60 +18,142 @@ This project is designed to demonstrate SQL skills and techniques typically used
 5. **Business Analysis**: Use SQL to answer specific business questions and derive insights from the sales data.
 
 ## Technologies Used
+
 **PostgreSQL**: Relational database management system
+
 **pgAdmin 4**: Graphical interface for database administration
+
 **SQL**: Creating, querying, and managing database data
+
 
 ## Project Structure
 
 ### 1. Database Setup
 
-- **Database Creation**: The project starts by creating a database named `p1_retail_db`.
+- **Database Creation**: The project starts by creating a database named `sql_query_p1`.
 - **Table Creation**: A table named `retail_sales` is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
 
 ```sql
-CREATE DATABASE p1_retail_db;
+CREATE DATABASE sql_query_p1;
 
-CREATE TABLE retail_sales
-(
-    transactions_id INT PRIMARY KEY,
-    sale_date DATE,	
-    sale_time TIME,
-    customer_id INT,	
-    gender VARCHAR(10),
-    age INT,
-    category VARCHAR(35),
-    quantity INT,
-    price_per_unit FLOAT,	
-    cogs FLOAT,
-    total_sale FLOAT
-);
+-- STEP#1 : DROP THE TABLE IF EXISTS
+DROP TABLE IF EXISTS retail_sales;
+
+-- STEP#2: CREATE THE TABLE 'retail_sales' from dataset columns names.
+CREATE TABLE retail_sales 
+	(
+	transactions_id INT PRIMARY KEY,
+	sale_date DATE,
+	sale_time TIME,
+	customer_id INT,
+	gender VARCHAR(15),
+	age INT,
+	category VARCHAR(15),	 
+	quantiy INT,
+	price_per_unit FLOAT,
+	cogs	FLOAT,
+	total_sale FLOAT
+	);
 ```
 
+
 ### 2. Data Exploration & Cleaning
+
+
 
 - **Record Count**: Determine the total number of records in the dataset.
 - **Customer Count**: Find out how many unique customers are in the dataset.
 - **Category Count**: Identify all unique product categories in the dataset.
 - **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
 
+
+
+```sql
+SELECT * FROM retail_sales;
+SELECT * FROM retail_sales limit 10;
+```
+
+**DATA CLEANING**
+
+- **Null Value Check in transactions_ID column**: Check for any null values in the dataset and delete records with missing data.
+```sql
+select * from retail_sales 
+WHERE transactions_ID IS NULL 
+```
+
+- **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
+```sql
+SELECT * from retail_sales 
+WHERE 
+	transactions_id IS NULL 
+	or 	sale_date IS NULL 
+	OR	sale_time IS NULL 
+	OR gender IS NULL 
+	OR category IS NULL 
+	OR quantiy IS NULL 
+	OR cogs IS NULL 
+	OR total_sale IS NULL; 
+
+DELETE FROM retail_sales 
+WHERE 
+	transactions_id IS NULL 
+	or 	sale_date IS NULL 
+	OR	sale_time IS NULL 
+	OR gender IS NULL 
+	OR category IS NULL 
+	OR quantiy IS NULL 
+	OR cogs IS NULL 
+	OR total_sale IS NULL; 
+```
+
+
+
+**DATA EXPLORATION**
+
+--HOW MANY SALES WE HAVE / HOW MANY RECORDS WE HAVE
+SELECT COUNT(*) AS total_sales FROM retail_sales;
+
+
+- **Record Count**: Determine the total number of records in the dataset.
 ```sql
 SELECT COUNT(*) FROM retail_sales;
-SELECT COUNT(DISTINCT customer_id) FROM retail_sales;
-SELECT DISTINCT category FROM retail_sales;
-
-SELECT * FROM retail_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
-
-DELETE FROM retail_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
 ```
+
+
+- **HOW MANY CUSTOMERS WE HAVE**
+SELECT
+    COUNT(customer_id) AS total_customers
+FROM retail_sales;
+
+- **Customer Count**: Find out how many unique customers are in the dataset.
+```sql
+SELECT
+    COUNT(DISTINCT customer_id) AS total_customers
+FROM retail_sales;
+```
+
+
+- **Category Count**: Identify all unique product categories in the dataset.
+```sql
+SELECT DISTINCT category FROM retail_sales;
+```
+
+
+- **HOW MANY CATEGORIES NAMES WE HAVE**
+```sql
+SELECT
+    DISTINCT category AS total_categories_names
+FROM retail_sales;
+```
+
+- **HOW MANY CATEGORIES WE HAVE**
+```sql
+SELECT
+    COUNT(DISTINCT category) AS total_categories
+FROM retail_sales;
+```
+
+
 
 ### 3. Data Analysis & Findings
 
@@ -83,6 +165,10 @@ SELECT *
 FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
+-- when I run this code, then it gives me all the sales which made on this specific date.
+
+--It shows 11 sales.
+
 
 2. **Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022**:
 ```sql
@@ -105,6 +191,12 @@ SELECT
     COUNT(*) as total_orders
 FROM retail_sales
 GROUP BY 1
+
+-- if i need total orders as well: then i write
+SELECT 	SUM(total_sale) AS total_sale, category, count(*) as total_orders
+FROM retail_sales
+GROUP BY category;
+
 ```
 
 4. **Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.**:
@@ -211,24 +303,11 @@ GROUP BY shift
 
 This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
 
-## How to Use
 
-1. **Clone the Repository**: Clone this project repository from GitHub.
-2. **Set Up the Database**: Run the SQL scripts provided in the `database_setup.sql` file to create and populate the database.
-3. **Run the Queries**: Use the SQL queries provided in the `analysis_queries.sql` file to perform your analysis.
-4. **Explore and Modify**: Feel free to modify the queries to explore different aspects of the dataset or answer additional business questions.
-
-## Author - Zero Analyst
+## Author - Hina Zubair
 
 This project is part of my portfolio, showcasing the SQL skills essential for data analyst roles. If you have any questions, feedback, or would like to collaborate, feel free to get in touch!
 
-### Stay Updated and Join the Community
+### Connect with me on LinkedIn
 
-For more content on SQL, data analysis, and other data-related topics, make sure to follow me on social media and join our community:
-
-- **YouTube**: [Subscribe to my channel for tutorials and insights](https://www.youtube.com/@zero_analyst)
-- **Instagram**: [Follow me for daily tips and updates](https://www.instagram.com/zero_analyst/)
-- **LinkedIn**: [Connect with me professionally](https://www.linkedin.com/in/najirr)
-- **Discord**: [Join our community to learn and grow together](https://discord.gg/36h5f2Z5PK)
-
-Thank you for your support, and I look forward to connecting with you!
+- **LinkedIn**: [Connect with me professionally](https://www.linkedin.com/in/hinaazubairrms)
