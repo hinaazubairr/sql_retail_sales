@@ -110,9 +110,10 @@ WHERE
 
 **DATA EXPLORATION**
 
---HOW MANY SALES WE HAVE / HOW MANY RECORDS WE HAVE
+- **HOW MANY SALES WE HAVE / HOW MANY RECORDS WE HAVE**
+```sql
 SELECT COUNT(*) AS total_sales FROM retail_sales;
-
+```
 
 - **Record Count**: Determine the total number of records in the dataset.
 ```sql
@@ -121,9 +122,12 @@ SELECT COUNT(*) FROM retail_sales;
 
 
 - **HOW MANY CUSTOMERS WE HAVE**
+```sql
 SELECT
     COUNT(customer_id) AS total_customers
 FROM retail_sales;
+```
+
 
 - **Customer Count**: Find out how many unique customers are in the dataset.
 ```sql
