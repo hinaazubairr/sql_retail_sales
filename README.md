@@ -1,19 +1,26 @@
 # Retail Sales Analysis SQL Project
+# PostgreSQL Database Project | SQL & pgAdmin
 
 ## Project Overview
 
 **Project Title**: Retail Sales Analysis  
-**Level**: Beginner  
-**Database**: `p1_retail_db`
+**Database**: `SQL- Retail Sales Analysis`
 
-This project is designed to demonstrate SQL skills and techniques typically used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, performing exploratory data analysis (EDA), and answering specific business questions through SQL queries. This project is ideal for those who are starting their journey in data analysis and want to build a solid foundation in SQL.
+This project demonstrates my practical experience working with PostgreSQL and pgAdmin to create and manage a relational database and execute SQL queries. I completed this hands-on project as part of my SQL learning journey in data analysis and want to build a solid foundation in SQL, applying database concepts and SQL techniques in a practical environment. It helped me strengthen my understanding of relational databases, database management, and querying structured data. 
+This project is designed to demonstrate SQL skills and techniques typically used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, performing exploratory data analysis (EDA), and answering specific business questions through SQL queries.  
 
 ## Objectives
 
-1. **Set up a retail sales database**: Create and populate a retail sales database with the provided sales data.
-2. **Data Cleaning**: Identify and remove any records with missing or null values.
-3. **Exploratory Data Analysis (EDA)**: Perform basic exploratory data analysis to understand the dataset.
-4. **Business Analysis**: Use SQL to answer specific business questions and derive insights from the sales data.
+1. **Understand relational database concepts and structure**.
+2. **Set up a retail sales database**: Create and populate a retail sales database with the provided sales data. Use pgAdmin to interact with the database.
+3. **Data Cleaning**: Identify and remove any records with missing or null values.
+4. **Exploratory Data Analysis (EDA)**: Perform basic exploratory data analysis to understand the dataset.
+5. **Business Analysis**: Use SQL to answer specific business questions and derive insights from the sales data.
+
+## Technologies Used
+**PostgreSQL**: Relational database management system
+**pgAdmin 4**: Graphical interface for database administration
+**SQL**: Creating, querying, and managing database data
 
 ## Project Structure
 
