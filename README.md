@@ -51,7 +51,7 @@ CREATE TABLE retail_sales
 	category VARCHAR(15),	 
 	quantiy INT,
 	price_per_unit FLOAT,
-	cogs	FLOAT,
+	cogs FLOAT,
 	total_sale FLOAT
 	);
 ```
@@ -77,7 +77,8 @@ SELECT * FROM retail_sales limit 10;
 
 - **Null Value Check in transactions_ID column**: Check for any null values in the dataset and delete records with missing data.
 ```sql
-select * from retail_sales 
+SELECT *
+FROM retail_sales 
 WHERE transactions_ID IS NULL 
 ```
 
@@ -86,8 +87,8 @@ WHERE transactions_ID IS NULL
 SELECT * from retail_sales 
 WHERE 
 	transactions_id IS NULL 
-	or 	sale_date IS NULL 
-	OR	sale_time IS NULL 
+	OR sale_date IS NULL 
+	OR sale_time IS NULL 
 	OR gender IS NULL 
 	OR category IS NULL 
 	OR quantiy IS NULL 
@@ -97,8 +98,8 @@ WHERE
 DELETE FROM retail_sales 
 WHERE 
 	transactions_id IS NULL 
-	or 	sale_date IS NULL 
-	OR	sale_time IS NULL 
+	OR sale_date IS NULL 
+	OR sale_time IS NULL 
 	OR gender IS NULL 
 	OR category IS NULL 
 	OR quantiy IS NULL 
